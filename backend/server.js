@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
 const port = 3000; // You can use any port you prefer
-app.use(bodyParser.json());
-const usersController = require('../controllers/usersController');
+app.use(express.json());
+const usersController = require('./controllers/signup');
 // Define a simple route
 app.post('/signup',usersController.createuser);
 
