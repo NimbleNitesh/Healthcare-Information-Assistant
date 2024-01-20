@@ -2,16 +2,14 @@ import mongoose from "mongoose";
 
 const mongoURI = 'mongodb+srv://healthcarellm:healthcare@cluster0.tyoyico.mongodb.net/?retryWrites=true&w=majority';
 
-mongoose.connect(mongoURI);
+const connectDB = (url) => {
+  mongoose.set('strictQuery', true);
 
-const db = mongoose.connection;
+  mongoose.connect(url)
+      .then(() =>
+          console.log("MongoDB Connected"))
+      .catch((error) =>
+          console.log(error))
+}
 
-db.on('error', (err) => {
-  console.error(`MongoDB connection error: ${err}`);
-});
-
-db.once('open', () => {
-  console.log('Connected to MongoDB');
-});
-
-export default db;
+export default connectDB;
