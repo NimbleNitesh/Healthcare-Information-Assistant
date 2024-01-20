@@ -1,12 +1,10 @@
 // controllers/usersController.js
 
-const User = require('../models/user');
-const nodemailer = require("nodemailer");
-const jwt = require('jsonwebtoken');
+import User from '../models/user.js';
+import nodemailer from 'nodemailer';
+import jwt from 'jsonwebtoken';
 
 // Generate a token with user information
-
-
 const globalSecretKey = "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";
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -17,8 +15,10 @@ const transporter = nodemailer.createTransport({
     pass: "gylycoafvmnhthbl"
   }
 });
+
+
 // Controller function to handle the '/users' route
-exports.createuser = async (req, res) => {
+let createuser = async (req, res) => {
   try {
     const newUser = new User({
       name: req.body.name,
@@ -48,3 +48,6 @@ exports.createuser = async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 };
+
+
+export default { createuser };

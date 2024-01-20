@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const mongoURI = 'mongodb+srv://healthcarellm:healthcare@cluster0.tyoyico.mongodb.net/?retryWrites=true&w=majority';
 
@@ -13,3 +13,5 @@ db.on('error', (err) => {
 db.once('open', () => {
   console.log('Connected to MongoDB');
 });
+
+export default db;

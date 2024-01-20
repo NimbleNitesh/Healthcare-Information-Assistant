@@ -1,7 +1,7 @@
 
 
 
-exports.verifyuser = async (req, res) => {
+let verifyuser = async (req, res) => {
     const token = req.query.token;
 //   const verificationStatus = await checkVerificationStatus(token);
 //   console.log(verificationStatus)
@@ -39,3 +39,5 @@ exports.verifyuser = async (req, res) => {
   }
 };
   
+
+export default { verifyuser };

@@ -1,12 +1,13 @@
-const express = require('express');
+import express from 'express';
+import bodyParser from 'body-parser';
+import usersController from './controllers/signup.js';
+import usersVerify from './controllers/verify.js';
+import db from './db.js';
+
 const app = express();
-const db = require('./db');
 const port = 3000; // You can use any port you prefer
-app.use(express.json());
+app.use(express.json( {limit: '50mb'} ));
 
-
-const usersController = require('./controllers/signup');
-const usersVerify = require('./controllers/verify');
 // Define a simple route
 app.post('/signup',usersController.createuser);
 app.get('/verify',usersVerify.verifyuser);
