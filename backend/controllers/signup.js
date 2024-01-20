@@ -1,6 +1,6 @@
 // controllers/usersController.js
 
-const User = require('../user');
+const User = require('../models/user');
 
 // Controller function to handle the '/users' route
 exports.createuser = async (req, res) => {
@@ -9,7 +9,8 @@ exports.createuser = async (req, res) => {
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
-      texts: req.body.texts
+      texts: req.body.texts,
+      
     });
 
     const savedUser = await newUser.save();

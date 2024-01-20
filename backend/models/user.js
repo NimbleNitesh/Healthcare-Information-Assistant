@@ -16,6 +16,9 @@ const userSchema = new mongoose.Schema({
   },
   texts: [{
     type: String
+  }],
+  verified: [{
+    type: Boolean
   }]
 });
 
