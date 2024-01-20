@@ -1,0 +1,1 @@
+# This is a healthcare project.It is a MERN stack project. It uses Mistral LLM model.
