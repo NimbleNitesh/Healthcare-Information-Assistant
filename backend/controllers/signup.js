@@ -1,6 +1,6 @@
 // controllers/usersController.js
 
-const User = require('user');
+const User = require('../user');
 
 // Controller function to handle the '/users' route
 exports.createuser = async (req, res) => {
