@@ -17,7 +17,13 @@ const userSchema = new mongoose.Schema({
     required: true
   },
   texts: [{
-    type: String
+    // json type with two keys: req and res
+    req: {
+      type: String
+    },
+    res: {
+      type: String
+    }
   }],
   verified: {
     type: Boolean
