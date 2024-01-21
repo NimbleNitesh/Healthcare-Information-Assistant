@@ -61,7 +61,7 @@ const Login = () => {
       </div>
       <div className="loginBox">
         <LoginForm className="login">
-          <h2>Login</h2>
+          <h2 className="heading">Login</h2>
           {/* Add your image here */}
           <div className="loginWindow">
             <div className="loginData">
