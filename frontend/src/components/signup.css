@@ -1,0 +1,58 @@
+.fullContainer{
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../assets/login_background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.signin{
+    height: 600px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+.signinButton{
+    background: lightcyan;
+    color: green;
+    border: 1px solid navy;
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 100px;
+}
+
+.otherButton{
+    background: lightslategrey;
+    color: white;
+    border: 1px solid black;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+.signinButton:hover{
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: darkgreen;
+}
+
+.signinData{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.signinWindow{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 10px;
+}

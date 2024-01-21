@@ -4,7 +4,7 @@ import styled from "styled-components";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
-import login_background from "../assets/login_background.jpg";
+// import login_background from "../assets/login_background.jpg";
 
 const LoginForm = styled.div`
   background-color: #fff;

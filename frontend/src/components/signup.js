@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import "./signup.css";
 import axios from 'axios';
 const SignupForm = styled.div`
   background-color: #fff;
@@ -40,15 +41,26 @@ const Signup = () => {
   };
 
   return (
-    <SignupForm>
+    <div className="fullContainer">
+      <div className="generalInfo">
+        <h1>Healthcare</h1>
+      </div>
+      <div className="signinBox">
+    <SignupForm className='signin'>
       <h2>Signup</h2>
       {/* Add your image here */}
+      <div className="signinWindow">
+            <div className="signinData">
       <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
       <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
       <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <button onClick={handleSignup}>Signup</button>
-      <button onClick={(e)=>{navigate('/Login')}}>Login</button>
+      </div>
+      <button className="signinButton" onClick={handleSignup}>Signup</button>
+      </div>
+      <button className="otherButton" onClick={(e)=>{navigate('/Login')}}>Login</button>
     </SignupForm>
+    </div>
+    </div>
   );
 };
 
