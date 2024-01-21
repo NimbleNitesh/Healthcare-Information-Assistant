@@ -38,7 +38,7 @@ const Login = () => {
         if(res.status === 200){
           console.log(res)
           localStorage.setItem('id', res.data.id);
-          navigate('/Signup')
+          navigate('/Homepage')
         }
         else{
           console.log('Error');

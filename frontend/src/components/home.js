@@ -1,6 +1,8 @@
 import React from 'react'
+import axios from 'axios'
 
 const id = localStorage.getItem('id');
+
 
 const home = () => {
   return (

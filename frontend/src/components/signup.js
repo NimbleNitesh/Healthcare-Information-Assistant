@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 const SignupForm = styled.div`
   background-color: #fff;
   padding: 20px;
@@ -18,6 +19,23 @@ const Signup = () => {
   const navigate = useNavigate();
   const handleSignup = () => {
     // Add signup logic here
+    axios.post('http://localhost:3000/signup', {
+        name,
+        email,
+        password
+      })
+      .then(res => {
+        if(res.status === 200){
+          console.log(res)
+          navigate('/Login')
+        }
+        else{
+          console.log('Error');
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
     console.log('Signing up...', name, email, password);
   };
 

@@ -47,7 +47,7 @@ let createuser = async (req, res) => {
     .then((result)=>{
       sendmail(result,res).then(()=>{
 
-        res.json({ message: "Email sent successfully" });
+        res.status(200).json({ message:"Sign in" });
       })
       .catch((error)=>{
         console.log(error);
