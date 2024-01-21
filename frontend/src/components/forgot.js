@@ -52,9 +52,9 @@ const ForgotPassword = () => {
       {/* Add your image here */}
       <div className="forgotWindow">
             <div className="forgotData">
-      <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <input type="newpassword" placeholder="New Password" value={newpassword} onChange={(e) => setPassword(e.target.value)} />
-      <input type="confirmpassword" placeholder="Re-Enter Password" value={confirmpassword} onChange={(e) => setconfirmPassword(e.target.value)} />
+      <input type="email" className='inputbox' placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      <input type="newpassword" className='inputbox' placeholder="New Password" value={newpassword} onChange={(e) => setPassword(e.target.value)} />
+      <input type="confirmpassword" className='inputbox' placeholder="Re-Enter Password" value={confirmpassword} onChange={(e) => setconfirmPassword(e.target.value)} />
       </div>
       <button className="forgotButton" onClick={handleForgotPassword}>Reset Password</button>
       </div>

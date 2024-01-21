@@ -51,9 +51,9 @@ const Signup = () => {
       {/* Add your image here */}
       <div className="signinWindow">
             <div className="signinData">
-      <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
-      <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      <input type="text" className='inputbox' placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+      <input type="email" className='inputbox' placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      <input type="password" className='inputbox' placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
       </div>
       <button className="signinButton" onClick={handleSignup}>Signup</button>
       </div>
