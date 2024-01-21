@@ -12,12 +12,10 @@ const port = 3000; // You can use any port you prefer
 app.use(cors());
 app.use(express.json( {limit: '50mb'} ));
 
-app.get('/', (req, res) => {
-  res.send({ message: "Hello World!" })
-})
+
 // Define a simple route
-app.use('/signup',usersController.createuser);
-app.use('/verify',usersVerify.verifyuser);
+app.post('/signup',usersController.createuser);
+app.get('/verify/:id/:secretKey',usersVerify.verifyuser);
 // Start the server
 const startServer = async () => {
   try {

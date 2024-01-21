@@ -19,9 +19,9 @@ const userSchema = new mongoose.Schema({
   texts: [{
     type: String
   }],
-  verified: [{
+  verified: {
     type: Boolean
-  }]
+  }
 });
 
 const User = mongoose.model('User', userSchema);

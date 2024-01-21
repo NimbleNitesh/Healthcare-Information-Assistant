@@ -2,10 +2,11 @@
 
 import User from '../models/user.js';
 import nodemailer from 'nodemailer';
-import jwt from 'jsonwebtoken';
+import { v4 as uuidv4 } from 'uuid';
 
-// Generate a token with user information
-const globalSecretKey = "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";
+const myUuid = uuidv4();
+
+
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   post: 587,
@@ -16,6 +17,18 @@ const transporter = nodemailer.createTransport({
   }
 });
 
+async function sendmail({_id,email},res){
+  const secretKey = myUuid + _id;
+
+      const verificationLink = `http://localhost:3000/verify/${_id}/${secretKey}`;
+
+      await transporter.sendMail({
+        from: "healthcarellm@gmail.com",
+        to: email, // Specify the recipient email address here
+        subject: "Verifiy your Email",
+        text: `Click the following link to verify your email: ${verificationLink}`,
+      });
+}
 
 // Controller function to handle the '/users' route
 let createuser = async (req, res) => {
@@ -30,19 +43,17 @@ let createuser = async (req, res) => {
     const user = {
       email: req.body.email,
     };
-    const savedUser = await newUser.save();
-    const secretKey = `${req.body.email}:${globalSecretKey}`;
-      const token = jwt.sign(user, secretKey);
+    newUser.save()
+    .then((result)=>{
+      sendmail(result,res).then(()=>{
 
-      const verificationLink = `http://localhost:8085/verify?token=${token}`;
-
-      await transporter.sendMail({
-        from: "healthcarellm@gmail.com",
-        to: req.body.email, // Specify the recipient email address here
-        subject: "Verifiy your Email",
-        text: `Click the following link to verify your email: ${verificationLink}`,
-      });
-    res.json(savedUser);
+        res.json({ message: "Email sent successfully" });
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
+    })
+    
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal Server Error');
