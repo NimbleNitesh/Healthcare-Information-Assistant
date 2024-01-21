@@ -47,7 +47,7 @@ const Signup = () => {
       </div>
       <div className="signinBox">
     <SignupForm className='signin'>
-      <h2>Signup</h2>
+      <h2 className='heading'>SignUp</h2>
       {/* Add your image here */}
       <div className="signinWindow">
             <div className="signinData">
@@ -57,7 +57,9 @@ const Signup = () => {
       </div>
       <button className="signinButton" onClick={handleSignup}>Signup</button>
       </div>
+      <div className='already'>Already have an account ?  
       <button className="otherButton" onClick={(e)=>{navigate('/Login')}}>Login</button>
+      </div>
     </SignupForm>
     </div>
     </div>

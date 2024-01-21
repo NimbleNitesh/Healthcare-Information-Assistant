@@ -30,17 +30,31 @@
 }
 
 .otherButton{
-    background: lightslategrey;
-    color: white;
-    border: 1px solid black;
-    font-weight: 300;
+    background: lightcyan;
+    color: green;
+    border: 1px solid navy;
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: 500;
     cursor: pointer;
+    width: 100px;
+    margin-left: 0.4cm;
 }
 
 .signinButton:hover{
-    font-weight: 800;
-    font-size: 1.1rem;
-    color: darkgreen;
+    background-color: rgba(0, 0, 255, 0.785);
+    color:black;
+}
+
+.otherButton:hover{
+    background-color: green;
+    color:black;
+}
+
+.heading{
+    text-align: center;
+    text-decoration:underline;
+    color: blue;
 }
 
 .signinData{
@@ -48,6 +62,10 @@
     flex-direction: column;
     justify-content: space-around;
     gap: 10px;
+}
+
+.already{
+    margin-left: 2cm;
 }
 
 .signinWindow{
