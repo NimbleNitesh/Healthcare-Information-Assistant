@@ -1,0 +1,44 @@
+.fullContainer{
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../assets/login_background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.loginButton{
+    background: lightcyan;
+    color: green;
+    border: 1px solid navy;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 800;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.loginButton:hover{
+    font-weight: 800;
+    font-size: 1000;
+    color: darkgreen;
+}
+
+.otherButton{
+    background: lightcyan;
+    color: green;
+    border: 1px solid navy;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 800;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.loginBox{
+    height: 15%;
+}

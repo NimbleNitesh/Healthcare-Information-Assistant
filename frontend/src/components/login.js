@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './login.css';
+import login_background from '../assets/login_background.jpg';
 
 const LoginForm = styled.div`
   background-color: #fff;
@@ -54,15 +56,22 @@ const Login = () => {
   };
 
   return (
+    <div className='fullContainer'>
+    <div className='generalInfo'>
+    <h1>Healthcare</h1>
+    </div>
+    <div className='loginBox'>
     <LoginForm>
       <h2>Login</h2>
       {/* Add your image here */}
       <input type="email" placeholder="Email" value={email} onChange={handleEmailChange} />
       <input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
-      <button onClick={handleLogin}>Login</button>
-      <button onClick={(e)=>{navigate('/Signup')}}>Signup</button>
-      <button onClick={(e)=>{navigate('/Forgot')}}>Forgot Password</button>
+      <button className='loginButton' onClick={handleLogin}>Login</button>
+      <button className='otherButton' onClick={(e)=>{navigate('/Signup')}}>Signup</button>
+      <button className='otherButton' onClick={(e)=>{navigate('/Forgot')}}>Forgot Password</button>
     </LoginForm>
+    </div>
+    </div>
   );
 };
 
