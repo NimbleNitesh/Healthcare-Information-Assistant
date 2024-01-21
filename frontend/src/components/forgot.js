@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import "./forgot.css";
 import { useNavigate } from 'react-router-dom';
 const ForgotPasswordForm = styled.div`
   background-color: #fff;
@@ -41,14 +42,25 @@ const ForgotPassword = () => {
   };
 
   return (
-    <ForgotPasswordForm>
-      <h2>Forgot Password</h2>
+    <div className="fullContainer">
+      <div className="generalInfo">
+        <h1>Healthcare</h1>
+      </div>
+      <div className="forgotBox">
+    <ForgotPasswordForm className='forgot'>
+      <h2 className='heading'>Forgot Password</h2>
       {/* Add your image here */}
+      <div className="forgotWindow">
+            <div className="forgotData">
       <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
       <input type="newpassword" placeholder="New Password" value={newpassword} onChange={(e) => setPassword(e.target.value)} />
       <input type="confirmpassword" placeholder="Re-Enter Password" value={confirmpassword} onChange={(e) => setconfirmPassword(e.target.value)} />
-      <button onClick={handleForgotPassword}>Reset Password</button>
+      </div>
+      <button className="forgotButton" onClick={handleForgotPassword}>Reset Password</button>
+      </div>
     </ForgotPasswordForm>
+    </div>
+    </div>
   );
 };
 

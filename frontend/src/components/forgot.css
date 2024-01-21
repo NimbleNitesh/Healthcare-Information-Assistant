@@ -1,0 +1,55 @@
+.fullContainer{
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../assets/login_background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.forgot{
+    height: 600px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+
+.forgotButton{
+    background: lightcyan;
+    color: green;
+    border: 1px solid navy;
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 100px;
+    margin-left: 3.5cm;
+}
+
+.forgotButton:hover{
+    background-color: rgba(0, 0, 255, 0.785);
+    color:black;
+}
+
+.forgotData{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.already{
+    margin-left: 2cm;
+}
+
+.forgotWindow{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 10px;
+}
