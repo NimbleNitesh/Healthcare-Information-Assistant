@@ -38,7 +38,7 @@ const Login = () => {
         if(res.status === 200){
           console.log(res)
           localStorage.setItem('id', res.data.id);
-          navigate('/Homepage')
+          navigate('/Signup')
         }
         else{
           console.log('Error');
@@ -60,6 +60,8 @@ const Login = () => {
       <input type="email" placeholder="Email" value={email} onChange={handleEmailChange} />
       <input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
       <button onClick={handleLogin}>Login</button>
+      <button onClick={(e)=>{navigate('/Signup')}}>Signup</button>
+      <button onClick={(e)=>{navigate('/Forgot')}}>Forgot Password</button>
     </LoginForm>
   );
 };

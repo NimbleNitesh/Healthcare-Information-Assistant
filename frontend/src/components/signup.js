@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
+import { useNavigate } from 'react-router-dom';
 const SignupForm = styled.div`
   background-color: #fff;
   padding: 20px;
@@ -15,7 +15,7 @@ const Signup = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const navigate = useNavigate();
   const handleSignup = () => {
     // Add signup logic here
     console.log('Signing up...', name, email, password);
@@ -29,6 +29,7 @@ const Signup = () => {
       <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
       <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
       <button onClick={handleSignup}>Signup</button>
+      <button onClick={(e)=>{navigate('/Login')}}>Login</button>
     </SignupForm>
   );
 };
