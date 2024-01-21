@@ -1,0 +1,90 @@
+.homeContainer {
+    height: 100vh;
+    width: 100vw;
+    max-width: 95vw;
+    margin: 0 auto;
+    overflow-x: hidden;
+    background-image: url('../assets/chat_background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-top: 20px;
+}
+
+.request,
+.response,
+.newChat,
+.querybox,
+.responseButton,
+.responseDiv,
+.formatHomeContainer,
+.textContainer,
+.prevChats {
+    width: 90%;
+}
+
+.request,
+.response {
+    min-height: 50px; /* or adjust based on your needs */
+    word-wrap: break-word;
+}
+
+.request {
+    background: lightgreen;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+}
+
+.response {
+    background: lightblue;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+}
+
+.newChat {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.querybox {
+    width: 60%;
+    min-height: 50px; /* or adjust based on your needs */
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.responseButton {
+    height: 50px;
+    width: 80px;
+    background: lightgreen;
+    color: darkcyan;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.responseDiv {
+    min-height: 50px; /* or adjust based on your needs */
+    background-color: lightblue;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+}
+
+.formatHomeContainer,
+.textContainer,
+.prevChats {
+    margin-left: 30px;
+    margin-top: 15px;
+    /* padding: 20px; */
+}
+
+/* .textContainer,
+.prevChats {
+    max-width: 100%;
+    overflow: auto;
+} */
