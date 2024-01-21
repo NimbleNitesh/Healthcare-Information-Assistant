@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = styled.div`
   background-color: #fff;
@@ -23,13 +24,33 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
+  const navigate = useNavigate();
+
   const handleLogin = () => {
     // Add login logic here
     console.log('Logging in...', email, password);
-    axios.post('http://localhost:3000/login', {
-      email,
-      password
-    })
+    try{
+      axios.post('http://localhost:3000/login', {
+        email,
+        password
+      })
+      .then(res => {
+        if(res.status === 200){
+          console.log(res)
+          localStorage.setItem('token', res.data.token);
+          navigate('/Homepage')
+        }
+        else{
+          console.log('Error');
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    }
+    catch(err){
+      console.log(err)
+    }
   };
 
   return (

@@ -31,7 +31,7 @@ let loginuser = async (req, res) => {
     }
 
     // Login successful
-    res.status(200).json({ message: 'Login successful' });
+    res.status(200).json({ id: user._id });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal Server Error' });
