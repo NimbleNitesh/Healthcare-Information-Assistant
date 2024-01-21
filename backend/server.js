@@ -2,6 +2,7 @@ import express from 'express';
 import usersController from './controllers/signup.js';
 import usersVerify from './controllers/verify.js';
 import usersLogin from './controllers/login.js';
+import usersForgot from './controllers/forgot.js';
 import db from './db.js';
 import * as dotenv from "dotenv"
 import cors from 'cors';
@@ -18,6 +19,7 @@ app.use(express.json( {limit: '50mb'} ));
 app.post('/signup',usersController.createuser);
 app.get('/verify/:id/:secretKey',usersVerify.verifyuser);
 app.post('/login',usersLogin.loginuser);
+app.post('/forgot',usersForgot.forgotuser);
 // Start the server
 const startServer = async () => {
   try {
