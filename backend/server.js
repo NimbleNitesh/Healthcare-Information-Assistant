@@ -3,6 +3,7 @@ import usersController from './controllers/signup.js';
 import usersVerify from './controllers/verify.js';
 import usersLogin from './controllers/login.js';
 import usersForgot from './controllers/forgot.js';
+import usersChats from './controllers/chats.js';
 import db from './db.js';
 import * as dotenv from "dotenv"
 import cors from 'cors';
@@ -20,6 +21,7 @@ app.post('/signup',usersController.createuser);
 app.get('/verify/:id/:secretKey',usersVerify.verifyuser);
 app.post('/login',usersLogin.loginuser);
 app.post('/forgot',usersForgot.forgotuser);
+app.post('/chats',usersChats.chatsuser);
 // Start the server
 const startServer = async () => {
   try {
