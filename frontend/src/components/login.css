@@ -17,28 +17,60 @@
     border: 1px solid navy;
     border-radius: 5px;
     padding: 10px;
-    font-size: 800;
     font-weight: 500;
     cursor: pointer;
+    width: 100px;
 }
 
 .loginButton:hover{
     font-weight: 800;
-    font-size: 1000;
+    font-size: 1.1rem;
     color: darkgreen;
 }
 
 .otherButton{
-    background: lightcyan;
-    color: green;
-    border: 1px solid navy;
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 800;
-    font-weight: 500;
+    background: lightslategrey;
+    color: white;
+    border: 1px solid black;
+    font-weight: 300;
     cursor: pointer;
 }
 
-.loginBox{
-    height: 15%;
+.login{
+    height: 600px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+
+.loginData{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.loginWindow{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.otherButtonContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 10px;
+    
+}
+
+
+.inputbox{
+    height: 30px;
+    width: 380px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
 }

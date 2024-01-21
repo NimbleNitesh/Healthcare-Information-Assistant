@@ -1,10 +1,10 @@
 // Login.js
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import './login.css';
-import login_background from '../assets/login_background.jpg';
+import React, { useState } from "react";
+import styled from "styled-components";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import "./login.css";
+import login_background from "../assets/login_background.jpg";
 
 const LoginForm = styled.div`
   background-color: #fff;
@@ -15,8 +15,8 @@ const LoginForm = styled.div`
 `;
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -30,50 +30,82 @@ const Login = () => {
 
   const handleLogin = () => {
     // Add login logic here
-    console.log('Logging in...', email, password);
-    try{
-      axios.post('http://localhost:3000/login', {
-        email,
-        password
-      })
-      .then(res => {
-        if(res.status === 200){
-          console.log(res)
-          localStorage.setItem('id', res.data.id);
-          navigate('/Homepage')
-        }
-        else{
-          console.log('Error');
-        }
-      })
-      .catch(err => {
-        console.log(err);
-      });
-    }
-    catch(err){
-      console.log(err)
+    console.log("Logging in...", email, password);
+    try {
+      axios
+        .post("http://localhost:3000/login", {
+          email,
+          password,
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            console.log(res);
+            localStorage.setItem("id", res.data.id);
+            navigate("/Homepage");
+          } else {
+            console.log("Error");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } catch (err) {
+      console.log(err);
     }
   };
 
   return (
-    <div className='fullContainer'>
-    <div className='generalInfo'>
-    <h1>Healthcare</h1>
-    </div>
-    <div className='loginBox'>
-    <LoginForm>
-      <h2>Login</h2>
-      {/* Add your image here */}
-      <input type="email" placeholder="Email" value={email} onChange={handleEmailChange} />
-      <input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
-      <button className='loginButton' onClick={handleLogin}>Login</button>
-      <button className='otherButton' onClick={(e)=>{navigate('/Signup')}}>Signup</button>
-      <button className='otherButton' onClick={(e)=>{navigate('/Forgot')}}>Forgot Password</button>
-    </LoginForm>
-    </div>
+    <div className="fullContainer">
+      <div className="generalInfo">
+        <h1>Healthcare</h1>
+      </div>
+      <div className="loginBox">
+        <LoginForm className="login">
+          <h2>Login</h2>
+          {/* Add your image here */}
+          <div className="loginWindow">
+            <div className="loginData">
+              <input
+                type="email"
+                placeholder="Email"
+                className="inputbox"
+                value={email}
+                onChange={handleEmailChange}
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                className="inputbox"
+                value={password}
+                onChange={handlePasswordChange}
+              />
+            </div>
+            <button className="loginButton" onClick={handleLogin}>
+              Login
+            </button>
+          </div>
+          <div className="otherButtonContainer">
+            <button
+              className="otherButton"
+              onClick={(e) => {
+                navigate("/Signup");
+              }}
+            >
+              Signup
+            </button>
+            <button
+              className="otherButton"
+              onClick={(e) => {
+                navigate("/Forgot");
+              }}
+            >
+              Forgot Password
+            </button>
+          </div>
+        </LoginForm>
+      </div>
     </div>
   );
 };
-
 
 export default Login;
