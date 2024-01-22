@@ -29,11 +29,11 @@ const Home = () => {
       });
   };
 
-  const loadResponse = async async () => {
+  const loadResponse = async () => {
     const OPENROUTER_API_KEY =
       "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";
   
-    const res=await try {
+    try {
       const response = await axios.post(
         "https://openrouter.ai/api/v1/chat/completions",
         {
@@ -55,14 +55,6 @@ const Home = () => {
         const saveResponse = await axios.post(
           `http://localhost:3000/savechats/${id}`,
           {
-      )
-      .then((response) => {
-        setResponse(response.data.choices[0].message.content);
-
-        // Save the chat to the database
-        axios
-          .post(`http://localhost:3000/savechats/${id}`, {
-            id: id,
             req: newChatText,
             res: response.data.choices[0].message.content,
           }
@@ -77,23 +69,6 @@ const Home = () => {
     } catch (error) {
       console.error("Error loading response:", error);
     }
-            res: response,
-          })
-          .then((saveResponse) => {
-            console.log("Chat saved successfully:", saveResponse.data);
-            // Optionally, you can load the chats after saving to update the UI
-            loadChats();
-          })
-          .catch((saveError) => {
-            console.error("Error saving chat:", saveError);
-          });
-      })
-      .catch((error) => {
-        console.error("Error loading response:", error);
-      })
-      .catch((error) => {
-        console.error("Error loading response:", error);
-      });
   };
 
   return (
