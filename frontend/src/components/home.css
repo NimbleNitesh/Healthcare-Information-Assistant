@@ -52,13 +52,21 @@
 }
 
 .querybox {
-    width: 60%;
-    min-height: 50px; /* or adjust based on your needs */
+    width: 80.5%;
+    min-height: 100px; /* or adjust based on your needs */
     border: 1px solid black;
     border-radius: 5px;
     padding: 5px;
     font-family: 'Times New Roman', Times, serif;
+    margin-left: 15px;
 }
+
+.logout{
+    background-color: red;
+    margin-left: 1000px;
+    cursor: pointer;
+}
+
 
 .responseButton {
     height: 50px;
@@ -67,6 +75,13 @@
     color: darkcyan;
     border: 1px solid black;
     border-radius: 5px;
+    margin: 20px;
+    margin-left: 400px;
+    cursor: pointer;
+}
+
+.responseButton:hover{
+    background-color: blueviolet;
 }
 
 .responseDiv {
@@ -76,10 +91,16 @@
     color: black;
 }
 
+.head{
+    font-size: 40px;
+    color: blueviolet;
+    margin-left: 200px;
+}
+
 .formatHomeContainer,
 .textContainer,
 .prevChats {
-    margin-left: 30px;
+    margin-left: 10px;
     margin-top: 15px;
     /* padding: 20px; */
 }

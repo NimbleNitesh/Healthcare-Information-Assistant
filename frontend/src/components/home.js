@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./home.css";
 
 const Home = () => {
@@ -9,7 +10,7 @@ const Home = () => {
   const [response, setResponse] = useState(""); // State to store the response from the API
 
   const id = localStorage.getItem("id");
-
+  const navigate = useNavigate();
   const loadChats = () => {
     axios
       .post("http://localhost:3000/chats", { id })
@@ -74,6 +75,11 @@ const Home = () => {
   return (
     <div className="homeContainer">
       <div className="formatHomeContainer">
+      <button className="logout" onClick={(e)=>{navigate("/Login")}}>
+          Logout
+        </button>
+        <div className="head"> Your HealthCare Assistant</div>
+        
         <button className="responseButton" onClick={loadChats}>
           Load Chats
         </button>
