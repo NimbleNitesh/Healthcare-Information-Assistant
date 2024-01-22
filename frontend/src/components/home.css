@@ -1,5 +1,5 @@
 .homeContainer {
-    height: 100vh;
+    height: 90vh;
     width: 100vw;
     max-width: 95vw;
     margin: 0 auto;
@@ -12,6 +12,7 @@
     flex-direction: column;
     gap: 5px;
     padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .request,
