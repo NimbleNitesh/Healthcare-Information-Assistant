@@ -49,11 +49,11 @@ const Home = () => {
       )
       .then((response) => {
         setResponse(response.data.choices[0].message.content);
-
+      })
+      .then(() => {
         // Save the chat to the database
         axios
           .post(`http://localhost:3000/savechats/${id}`, {
-            id: id,
             req: newChatText,
             res: response,
           })
@@ -65,10 +65,7 @@ const Home = () => {
           .catch((saveError) => {
             console.error("Error saving chat:", saveError);
           });
-      })
-      .catch((error) => {
-        console.error("Error loading response:", error);
-      })
+        })
       .catch((error) => {
         console.error("Error loading response:", error);
       });
