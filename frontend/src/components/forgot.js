@@ -44,9 +44,10 @@ const ForgotPassword = () => {
   return (
     <div className="fullContainer">
       <div className="generalInfo">
-        <h1>Healthcare</h1>
+      <h1 className="about">A tool that assists users in understanding medical information. The interface could allow users to input symptoms, and the system could provide information on potential health issues, treatment options, and preventive measures in an easy-to-understand format.</h1>
+    
       </div>
-      <div className="forgotBox">
+      <div className="loginBox">
     <ForgotPasswordForm className='forgot'>
       <h2 className='heading'>Forgot Password</h2>
       {/* Add your image here */}

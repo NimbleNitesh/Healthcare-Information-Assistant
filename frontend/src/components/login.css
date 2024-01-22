@@ -11,6 +11,11 @@
     align-items: center;
 }
 
+.about{
+    margin-left: 25px;
+    margin-right: 75px;
+}
+
 .loginButton{
     background: lightcyan;
     color: green;
@@ -71,7 +76,9 @@
     
 }
 
-
+.loginBox{
+    margin-right: 40px;
+}
 .inputbox{
     height: 30px;
     width: 380px;

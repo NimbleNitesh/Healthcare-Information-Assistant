@@ -29,11 +29,11 @@ const Home = () => {
       });
   };
 
-  const loadResponse = () => {
+  const loadResponse = async () => {
     const OPENROUTER_API_KEY =
       "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";
 
-    axios
+    const res=await axios
       .post(
         "https://openrouter.ai/api/v1/chat/completions",
         {
@@ -49,11 +49,11 @@ const Home = () => {
       )
       .then((response) => {
         setResponse(response.data.choices[0].message.content);
-      })
-      .then(() => {
+
         // Save the chat to the database
         axios
           .post(`http://localhost:3000/savechats/${id}`, {
+            id: id,
             req: newChatText,
             res: response,
           })
@@ -65,7 +65,10 @@ const Home = () => {
           .catch((saveError) => {
             console.error("Error saving chat:", saveError);
           });
-        })
+      })
+      .catch((error) => {
+        console.error("Error loading response:", error);
+      })
       .catch((error) => {
         console.error("Error loading response:", error);
       });
