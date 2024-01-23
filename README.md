@@ -1,4 +1,6 @@
-# This is a healthcare project.It is a MERN stack project. It uses Mistral LLM model.
+# This is a Healthcare Information Assistant project using MERN stack . It uses Mistral LLM model.
+
+# [DEPLOYMENT LINK](https://healthcarellm.netlify.app/)
 
 ![My Image](LoginPage.png)
 
