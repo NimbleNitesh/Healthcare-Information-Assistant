@@ -33,7 +33,7 @@ const Login = () => {
     console.log("Logging in...", email, password);
     try {
       axios
-        .post("http://localhost:3000/login", {
+        .post("http://localhost:8080/login", {
           email,
           password,
         })

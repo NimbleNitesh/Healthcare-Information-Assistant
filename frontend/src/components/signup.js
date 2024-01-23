@@ -20,7 +20,7 @@ const Signup = () => {
   const navigate = useNavigate();
   const handleSignup = () => {
     // Add signup logic here
-    axios.post('http://localhost:3000/signup', {
+    axios.post('http://localhost:8080/signup', {
         name,
         email,
         password
