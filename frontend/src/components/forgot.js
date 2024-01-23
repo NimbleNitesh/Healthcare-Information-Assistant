@@ -21,7 +21,7 @@ const ForgotPassword = () => {
   const handleForgotPassword = () => {
     // Add forgot password logic here
     console.log('Forgot password...', email);
-    axios.post('http://localhost:3000/forgot', {
+    axios.post('http://localhost:8080/forgot', {
         email,
         newpassword,
         confirmpassword
