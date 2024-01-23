@@ -21,7 +21,8 @@ const ForgotPassword = () => {
   const handleForgotPassword = () => {
     // Add forgot password logic here
     console.log('Forgot password...', email);
-    axios.post('http://localhost:8080/forgot', {
+    // axios.post('http://localhost:8080/forgot', {
+    axios.post('https://healthcarellm-srq1.onrender.com/forgot', {
         email,
         newpassword,
         confirmpassword

@@ -13,7 +13,8 @@ const Home = () => {
   const navigate = useNavigate();
   const loadChats = () => {
     axios
-      .post("http://localhost:8080/chats", { id })
+      // .post("http://localhost:8080/chats", { id })
+      .post("https://healthcarellm-srq1.onrender.com/chats", { id })
       .then((res) => {
         if (res.status === 200) {
           console.log(res.data.chats); // Assuming the array is in res.data.chats
@@ -53,8 +54,9 @@ const Home = () => {
   
       // Save the chat to the database
       try {
+        // `http://localhost:8080/savechats/${id}`,
         const saveResponse = await axios.post(
-          `http://localhost:8080/savechats/${id}`,
+          `https://healthcarellm-srq1.onrender.com/savechats/${id}`,
           {
             req: newChatText,
             res: response.data.choices[0].message.content,
