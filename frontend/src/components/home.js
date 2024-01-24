@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./home.css";
+// import * as dotenv from "dotenv"
 
+// dotenv.config();
 const Home = () => {
   const [chats, setChats] = useState([]); // State to store the array
   const [newChatText, setNewChatText] = useState(""); // State to store the user's query
@@ -31,25 +33,27 @@ const Home = () => {
   };
 
   const loadResponse = async () => {
-    const OPENROUTER_API_KEY =
-      "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";
+    
   
     try {
-      const response = await axios.post(
-        "https://openrouter.ai/api/v1/chat/completions",
-        {
-          model: "mistralai/mixtral-8x7b-instruct",
-          messages: [{ role: "user", content: newChatText }],
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${OPENROUTER_API_KEY}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const { GoogleGenerativeAI } = require("@google/generative-ai");
+// Access your API key as an environment variable (see "Set up your API key" above)
+const genAI = new GoogleGenerativeAI("AIzaSyAqcvDowg2fokxB5QZyWLY4qTyJcZuLPqI");
+
+
+  // For text-only input, use the gemini-pro model
+  const model = genAI.getGenerativeModel({ model: "gemini-pro"});
+
+  const prompt = newChatText;
+
+  const result = await model.generateContent(prompt);
+  const response = await result.response;
+  const text = response.text();
+  console.log(text);
+
+
   
-      await setResponse(response.data.choices[0].message.content);
+      await setResponse(text);
   
       // Save the chat to the database
       try {
@@ -57,7 +61,7 @@ const Home = () => {
           `http://localhost:8080/savechats/${id}`,
           {
             req: newChatText,
-            res: response.data.choices[0].message.content,
+            res: text,
           }
         );
   
