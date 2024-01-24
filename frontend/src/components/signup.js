@@ -20,7 +20,8 @@ const Signup = () => {
   const navigate = useNavigate();
   const handleSignup = () => {
     // Add signup logic here
-    axios.post('http://localhost:8080/signup', {
+    // axios.post('http://localhost:8080/signup', {
+    axios.post('https://healthcarellm-srq1.onrender.com/signup', {
         name,
         email,
         password
