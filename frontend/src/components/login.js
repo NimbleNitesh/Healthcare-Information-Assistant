@@ -30,7 +30,11 @@ const Login = () => {
 
   const handleLogin = () => {
     // Add login logic here
-    console.log("Logging in...", email, password);
+    if (!email || !password) {
+      alert('Please fill in all fields');
+      return;
+    }
+
     try {
       axios
         // .post("http://localhost:8080/login", {
@@ -40,11 +44,13 @@ const Login = () => {
         })
         .then((res) => {
           if (res.status === 200) {
-            console.log(res);
+            // console.log(res);
             localStorage.setItem("id", res.data.id);
             navigate("/Homepage");
-          } else {
-            console.log("Error");
+          } else if(res.status===201){
+            alert('Wrong Credentials')
+            setEmail('');
+            setPassword('');
           }
         })
         .catch((err) => {

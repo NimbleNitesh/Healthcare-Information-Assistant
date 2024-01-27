@@ -34,6 +34,11 @@ async function sendmail({_id,email},res){
 // Controller function to handle the '/users' route
 let createuser = async (req, res) => {
   try {
+    const email=req.body.email;
+    const user = await User.findOne({ email });
+    if (user) {
+      return res.status(201).json({ message: 'Already' });
+    }
     const newUser = new User({
       name: req.body.name,
       email: req.body.email,
@@ -41,13 +46,9 @@ let createuser = async (req, res) => {
       texts: [],
       verified: 0
     });
-    const user = {
-      email: req.body.email,
-    };
     newUser.save()
     .then((result)=>{
       sendmail(result,res).then(()=>{
-
         res.status(200).json({ message:"Sign in" });
       })
       .catch((error)=>{

@@ -21,6 +21,15 @@ const Signup = () => {
   const handleSignup = () => {
     // Add signup logic here
     // axios.post('http://localhost:8080/signup', {
+      if (!name || !email || !password) {
+        alert('Please fill in all fields');
+        return;
+      }
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if(!emailRegex.test(email)){
+        alert('Enter Valid Email Id');
+        return ;
+      }
     axios.post('https://healthcarellm-srq1.onrender.com/signup', {
         name,
         email,
@@ -28,8 +37,14 @@ const Signup = () => {
       })
       .then(res => {
         if(res.status === 200){
-          console.log(res)
+          alert('Check mail for verifiy the Email Id')
           navigate('/Login')
+        }
+        else if(res.status === 201){
+          alert('Email Id already in use');
+          setEmail('');
+          setName('');
+          setPassword('');
         }
         else{
           console.log('Error');
@@ -38,7 +53,7 @@ const Signup = () => {
       .catch(err => {
         console.log(err);
       });
-    console.log('Signing up...', name, email, password);
+    // console.log('Signing up...', name, email, password);
   };
 
   return (

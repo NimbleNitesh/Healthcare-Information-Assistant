@@ -19,7 +19,7 @@ const Home = () => {
       .post("https://healthcarellm-srq1.onrender.com/chats", { id })
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data.chats); // Assuming the array is in res.data.chats
+          // console.log(res.data.chats); // Assuming the array is in res.data.chats
           setChats(res.data.chats); // Update the state with the array
           if (!showPrevChats)
             setShowPrevChats(true); // Show prevChats when data is loaded
@@ -50,7 +50,7 @@ const genAI = new GoogleGenerativeAI("AIzaSyAqcvDowg2fokxB5QZyWLY4qTyJcZuLPqI");
   const result = await model.generateContent(prompt);
   const response = await result.response;
   const text = response.text();
-  console.log(text);
+  // console.log(text);
 
 
   

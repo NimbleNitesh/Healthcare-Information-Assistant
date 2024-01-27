@@ -20,17 +20,51 @@ const ForgotPassword = () => {
   const navigate = useNavigate();
   const handleForgotPassword = () => {
     // Add forgot password logic here
-    console.log('Forgot password...', email);
+    // console.log('Forgot password...', email);
     // axios.post('http://localhost:8080/forgot', {
+    if(!email || !newpassword || !confirmpassword){
+      alert('Please Enter all fields')
+      setEmail('');
+        setPassword('');
+        setconfirmPassword('');
+      return
+    }
+    else if(newpassword!==confirmpassword){
+      alert('Confirm Password does not match');
+      setEmail('');
+        setPassword('');
+        setconfirmPassword('');
+        return
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if(!emailRegex.test(email)){
+        alert('Enter Valid Email Id');
+        setEmail('');
+        setPassword('');
+        setconfirmPassword('');
+        return ;
+      }
     axios.post('https://healthcarellm-srq1.onrender.com/forgot', {
         email,
-        newpassword,
-        confirmpassword
+        newpassword
       })
       .then(res => {
         if(res.status === 200){
-          console.log(res)
+          // console.log(res)
+          alert('Password Successfully Reset')
           navigate('/Login')
+        }
+        else if(res.status===201){
+          alert('Wrong Email Id');
+          setEmail('');
+        setPassword('');
+        setconfirmPassword('');
+        }
+        else if(res.status===202){
+          alert('Email has not been verified')
+          setEmail('');
+        setPassword('');
+        setconfirmPassword('');
         }
         else{
           console.log('Error');
@@ -39,7 +73,7 @@ const ForgotPassword = () => {
       .catch(err => {
         console.log(err);
       });
-    console.log('Signing up...',email, newpassword);
+    // console.log('Signing up...',email, newpassword);
   };
 
   return (

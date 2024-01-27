@@ -12,23 +12,16 @@ let loginuser = async (req, res) => {
   try {
     // Find the user by email
     const user = await User.findOne({ email });
-
+    // console.log(email)
     // Check if the user exists
-    if (!user) {
-      return res.status(401).json({ message: 'Invalid credentials' });
+    if (!user || !user.verified || password != user.password) {
+      return res.status(201).json({ message: 'Invalid credentials' });
     }
 
-    // Check if the user is verified
-    if (!user.verified) {
-      return res.status(403).json({ message: 'Email not verified. Please check your email for verification instructions.' });
-    }
+   
 
     // Check if the password is correct
-    const passwordMatch = user.password;
-
-    if (passwordMatch!=password) {
-      return res.status(401).json({ message: 'Invalid credentials' });
-    }
+    
 
     // Login successful
     res.status(200).json({ id: user._id });
