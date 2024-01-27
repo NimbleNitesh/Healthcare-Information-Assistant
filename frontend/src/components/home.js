@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./home.css";
-// import * as dotenv from "dotenv"
 
-// dotenv.config();
 const Home = () => {
   const [chats, setChats] = useState([]); // State to store the array
   const [newChatText, setNewChatText] = useState(""); // State to store the user's query
@@ -39,7 +37,7 @@ const Home = () => {
     try {
       const { GoogleGenerativeAI } = require("@google/generative-ai");
 // Access your API key as an environment variable (see "Set up your API key" above)
-const genAI = new GoogleGenerativeAI("AIzaSyAqcvDowg2fokxB5QZyWLY4qTyJcZuLPqI");
+const genAI = new GoogleGenerativeAI("AIzaSyBLXkbgTs3DukAY2Vr10y5M846243payUw");
 
 
   // For text-only input, use the gemini-pro model
