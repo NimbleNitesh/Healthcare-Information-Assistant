@@ -27,6 +27,9 @@ const userSchema = new mongoose.Schema({
   }],
   verified: {
     type: Boolean
+  },
+  forgot: {
+    type: Boolean
   }
 });
 

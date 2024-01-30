@@ -17,7 +17,7 @@ const LoginForm = styled.div`
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [loading, setLoading] = useState(false);
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
@@ -30,12 +30,16 @@ const Login = () => {
 
   const handleLogin = () => {
     // Add login logic here
+    if(loading){
+      return;
+    }
     if (!email || !password) {
       alert('Please fill in all fields');
       return;
     }
 
     try {
+      setLoading(true);
       axios
         // .post("http://localhost:8080/login", {
         .post("https://healthcarellm-srq1.onrender.com/login", {
@@ -47,16 +51,20 @@ const Login = () => {
             // console.log(res);
             localStorage.setItem("id", res.data.id);
             navigate("/Homepage");
+            setLoading(false);
           } else if(res.status===201){
             alert('Wrong Credentials')
             setEmail('');
             setPassword('');
           }
+          setLoading(false);
         })
         .catch((err) => {
           console.log(err);
+          setLoading(false);
         });
     } catch (err) {
+      setLoading(false);
       console.log(err);
     }
   };

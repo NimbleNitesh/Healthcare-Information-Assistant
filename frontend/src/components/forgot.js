@@ -18,20 +18,26 @@ const ForgotPassword = () => {
   const [newpassword, setPassword] = useState('');
   const [confirmpassword, setconfirmPassword] = useState('');
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [showResetPassword, setShowResetPassword] = useState(false);
   const handleForgotPassword = () => {
     // Add forgot password logic here
     // console.log('Forgot password...', email);
     // axios.post('http://localhost:8080/forgot', {
+      if (loading) {
+        // If the button is already in a loading state, return early to prevent multiple clicks
+        return;
+      }
     if(!email || !newpassword || !confirmpassword){
       alert('Please Enter all fields')
-      setEmail('');
+      // setEmail('');
         setPassword('');
         setconfirmPassword('');
       return
     }
     else if(newpassword!==confirmpassword){
       alert('Confirm Password does not match');
-      setEmail('');
+      // setEmail('');
         setPassword('');
         setconfirmPassword('');
         return
@@ -44,7 +50,9 @@ const ForgotPassword = () => {
         setconfirmPassword('');
         return ;
       }
-    axios.post('https://healthcarellm-srq1.onrender.com/forgot', {
+      {
+        setLoading(true);
+    axios.post('https://healthcarellm-srq1.onrender.com/forgot2', {
         email,
         newpassword
       })
@@ -69,12 +77,40 @@ const ForgotPassword = () => {
         else{
           console.log('Error');
         }
+        setLoading(false);
       })
       .catch(err => {
         console.log(err);
+        setLoading(false);
       });
+    }
     // console.log('Signing up...',email, newpassword);
   };
+
+  const confirmhandleForgotPassword=()=>{
+    if(!email){
+      alert('Please Enter Email ID')
+      return
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if(!emailRegex.test(email)){
+        alert('Enter Valid Email Id');
+        setEmail('');
+        return ;
+      }
+      axios.post('https://healthcarellm-srq1.onrender.com/forgot', {
+        email
+      })
+      .then(res => {
+        
+        })
+      .catch(err=>{
+
+        });
+    alert('Please confirm your Email ID on mail');
+    setShowResetPassword(true);
+
+  }
 
   return (
     <div className="fullContainer">
@@ -89,11 +125,16 @@ const ForgotPassword = () => {
       <div className="forgotWindow">
             <div className="forgotData">
       <input type="email" className='inputbox' placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <input type="newpassword" className='inputbox' placeholder="New Password" value={newpassword} onChange={(e) => setPassword(e.target.value)} />
-      <input type="confirmpassword" className='inputbox' placeholder="Re-Enter Password" value={confirmpassword} onChange={(e) => setconfirmPassword(e.target.value)} />
-      </div>
-      <button className="forgotButton" onClick={handleForgotPassword}>Reset Password</button>
-      </div>
+      <button className="forgotButton" onClick={confirmhandleForgotPassword}>Confirm Email</button>
+      {showResetPassword && (
+                <>
+                  <input type="newpassword" className='inputbox' placeholder="New Password" value={newpassword} onChange={(e) => setPassword(e.target.value)} />
+                  <input type="confirmpassword" className='inputbox' placeholder="Re-Enter Password" value={confirmpassword} onChange={(e) => setconfirmPassword(e.target.value)} />
+                  <button className="forgotButton" onClick={handleForgotPassword}>Reset Password</button>
+                </>
+              )}
+              </div>
+              </div>
     </ForgotPasswordForm>
     </div>
     </div>

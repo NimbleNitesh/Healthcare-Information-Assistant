@@ -44,7 +44,8 @@ let createuser = async (req, res) => {
       email: req.body.email,
       password: req.body.password,
       texts: [],
-      verified: 0
+      verified: 0,
+      forgot:0
     });
     newUser.save()
     .then((result)=>{

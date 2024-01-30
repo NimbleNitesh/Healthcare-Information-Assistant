@@ -17,10 +17,15 @@ const Signup = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const handleSignup = () => {
     // Add signup logic here
     // axios.post('http://localhost:8080/signup', {
+      if (loading) {
+        // If the button is already in a loading state, return early to prevent multiple clicks
+        return;
+      }
       if (!name || !email || !password) {
         alert('Please fill in all fields');
         return;
@@ -30,6 +35,8 @@ const Signup = () => {
         alert('Enter Valid Email Id');
         return ;
       }
+      {
+        setLoading(true)
     axios.post('https://healthcarellm-srq1.onrender.com/signup', {
         name,
         email,
@@ -49,10 +56,13 @@ const Signup = () => {
         else{
           console.log('Error');
         }
+        setLoading(false)
       })
       .catch(err => {
         console.log(err);
+        setLoading(false)
       });
+    }
     // console.log('Signing up...', name, email, password);
   };
 

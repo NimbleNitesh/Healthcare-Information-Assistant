@@ -1,8 +1,10 @@
 import express from 'express';
 import usersController from './controllers/signup.js';
 import usersVerify from './controllers/verify.js';
+import users2Verify from './controllers/verify2.js';
 import usersLogin from './controllers/login.js';
 import usersForgot from './controllers/forgot.js';
+import users2Forgot from './controllers/forgot2.js';
 import usersChats from './controllers/chats.js';
 import userssaveChats from './controllers/savechats.js';
 import db from './db.js';
@@ -20,8 +22,10 @@ app.use(express.json( {limit: '50mb'} ));
 // Define a simple route
 app.post('/signup',usersController.createuser);
 app.get('/verify/:id/:secretKey',usersVerify.verifyuser);
+app.get('/verify2/:id/:secretKey',users2Verify.verify2user);
 app.post('/login',usersLogin.loginuser);
 app.post('/forgot',usersForgot.forgotuser);
+app.post('/forgot2',users2Forgot.forgot2user);
 app.post('/chats',usersChats.chatsuser);
 app.post('/savechats/:id',userssaveChats.savechatsuser);
 // Start the server

@@ -8,10 +8,17 @@ const Home = () => {
   const [newChatText, setNewChatText] = useState(""); // State to store the user's query
   const [showPrevChats, setShowPrevChats] = useState(false); // State to control visibility
   const [response, setResponse] = useState(""); // State to store the response from the API
-
+  const [loading, setLoading] = useState(false);
+  const [loadingchats, setLoadingchats] = useState(false);
   const id = localStorage.getItem("id");
   const navigate = useNavigate();
   const loadChats = () => {
+    if (loadingchats) {
+      // If the button is already in a loading state, return early to prevent multiple clicks
+      return;
+    }
+    else{
+      setLoadingchats(false)
     axios
       // .post("http://localhost:8080/chats", { id })
       .post("https://healthcarellm-srq1.onrender.com/chats", { id })
@@ -25,26 +32,33 @@ const Home = () => {
         } else {
           console.log("Error");
         }
+        setLoadingchats(false)
       })
       .catch((err) => {
         console.log(err);
+        setLoadingchats(false)
       });
+    }
   };
 
   const loadResponse = async () => {
     
-  
+    if (loading) {
+      // If the button is already in a loading state, return early to prevent multiple clicks
+      return;
+    }
     try {
+      setLoading(true)
       const { GoogleGenerativeAI } = require("@google/generative-ai");
 // Access your API key as an environment variable (see "Set up your API key" above)
-const genAI = new GoogleGenerativeAI("AIzaSyBLXkbgTs3DukAY2Vr10y5M846243payUw");
+const genAI = new GoogleGenerativeAI("AIzaSyATwaCo9bH4JxXswqOVnCmFmfTJDF755AI");
 
 
   // For text-only input, use the gemini-pro model
   const model = genAI.getGenerativeModel({ model: "gemini-pro"});
 
   const prompt = newChatText;
-
+      if(prompt.length===0){ setLoading(false);return}
   const result = await model.generateContent(prompt);
   const response = await result.response;
   const text = response.text();
@@ -64,14 +78,16 @@ const genAI = new GoogleGenerativeAI("AIzaSyBLXkbgTs3DukAY2Vr10y5M846243payUw");
             res: text,
           }
         );
-  
+          setLoading(false)
         // console.log("Chat saved successfully:", saveResponse.data);
         // Optionally, you can load the chats after saving to update the UI
         // loadChats();
       } catch (saveError) {
+        setLoading(false)
         console.error("Error saving chat:", saveError);
       }
     } catch (error) {
+      setLoading(false)
       console.error("Error loading response:", error);
     }
   };
