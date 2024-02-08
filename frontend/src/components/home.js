@@ -12,6 +12,7 @@ const Home = () => {
   const [loadingchats, setLoadingchats] = useState(false);
   const id = localStorage.getItem("id");
   const navigate = useNavigate();
+  const [newchat,setnewchat]=useState([]);
   const loadChats = () => {
     if (loadingchats) {
       // If the button is already in a loading state, return early to prevent multiple clicks
@@ -26,6 +27,7 @@ const Home = () => {
         if (res.status === 200) {
           // console.log(res.data.chats); // Assuming the array is in res.data.chats
           setChats(res.data.chats); // Update the state with the array
+          setnewchat([]);
           if (!showPrevChats)
             setShowPrevChats(true); // Show prevChats when data is loaded
           else setShowPrevChats(false);
@@ -59,15 +61,17 @@ const genAI = new GoogleGenerativeAI("AIzaSyATwaCo9bH4JxXswqOVnCmFmfTJDF755AI");
 
   const prompt = newChatText;
       if(prompt.length===0){ setLoading(false);return}
+      
   const result = await model.generateContent(prompt);
   const response = await result.response;
   const text = response.text();
   // console.log(text);
-
+  const updatedChat = [...newchat, { req: prompt, res: text }];
+    setnewchat(updatedChat);
 
   
       await setResponse(text);
-  
+      
       // Save the chat to the database
       try {
         // `http://localhost:8080/savechats/${id}`,
@@ -114,6 +118,15 @@ const genAI = new GoogleGenerativeAI("AIzaSyATwaCo9bH4JxXswqOVnCmFmfTJDF755AI");
             ))}
           </div>
         )}
+        <div className="prevChats">
+            {newchat.map((chat) => (
+              <div key={chat.id} className="textContainer">
+                <div className="request">{chat.req}</div>
+                <div className="response">{chat.res}</div>
+                <div style={{ height: "10px", width: "100vw" }}></div>
+              </div>
+            ))}
+          </div>
         <div className="newChat">
           <textarea
             className="querybox"
