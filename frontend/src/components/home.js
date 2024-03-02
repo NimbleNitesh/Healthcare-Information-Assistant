@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import sideImage from '../assets/home.jpg';
 import "./home.css";
 
 const Home = () => {
@@ -53,7 +54,7 @@ const Home = () => {
       setLoading(true)
       const { GoogleGenerativeAI } = require("@google/generative-ai");
 // Access your API key as an environment variable (see "Set up your API key" above)
-const genAI = new GoogleGenerativeAI("AIzaSyATwaCo9bH4JxXswqOVnCmFmfTJDF755AI");
+const genAI = new GoogleGenerativeAI("AIzaSyBOcuDnmeB1xBViPn_CX-dT6on1UR2iKfI");
 
 
   // For text-only input, use the gemini-pro model
@@ -97,51 +98,57 @@ const genAI = new GoogleGenerativeAI("AIzaSyATwaCo9bH4JxXswqOVnCmFmfTJDF755AI");
   };
 
   return (
-    <div className="homeContainer">
-      <div className="formatHomeContainer">
-      <button className="logout" onClick={(e)=>{navigate("/Login")}}>
-          Logout
-        </button>
-        <div className="head"> Your HealthCare Assistant</div>
-        
-        <button className="responseButton" onClick={loadChats}>
-          Load Chats
-        </button>
-        {showPrevChats && (
-          <div className="prevChats">
-            {chats.map((chat) => (
-              <div key={chat.id} className="textContainer">
-                <div className="request">{chat.req}</div>
-                <div className="response">{chat.res}</div>
-                <div style={{ height: "10px", width: "100vw" }}></div>
-              </div>
-            ))}
-          </div>
-        )}
-        <div className="prevChats">
-            {newchat.map((chat) => (
-              <div key={chat.id} className="textContainer">
-                <div className="request">{chat.req}</div>
-                <div className="response">{chat.res}</div>
-                <div style={{ height: "10px", width: "100vw" }}></div>
-              </div>
-            ))}
-          </div>
-        <div className="newChat">
-          <textarea
-            className="querybox"
-            placeholder="Type your query..."
-            value={newChatText}
-            onChange={(e) => setNewChatText(e.target.value)}
-          />
-          <button className="responseButton" onClick={loadResponse}>
-            Load Response
+    <div className="mainContainer">
+      <div className="sideImageContainer">
+        <img src={sideImage} alt="Side Image" className="sideImage" />
+      </div>
+      <div className="homeContainer">
+        <div className="formatHomeContainer">
+          <button className="logout" onClick={(e)=>{navigate("/Login")}}>
+            Logout
           </button>
-        </div>
-        {response && <div className="responseDiv">{response}</div>}
+          <div className="head"> Your HealthCare Assistant</div>
+          
+          <button className="loadButton" onClick={loadChats}>
+            Load Chats
+          </button>
+          {showPrevChats && (
+            <div className="prevChats">
+              {chats.map((chat) => (
+                <div key={chat.id} className="textContainer">
+                  <div className="request">{chat.req}</div>
+                  <div className="response">{chat.res}</div>
+                  <div style={{ height: "10px", width: "100vw" }}></div>
+                </div>
+              ))}
+            </div>
+          )}
+          <div className="prevChats">
+              {newchat.map((chat) => (
+                <div key={chat.id} className="textContainer">
+                  <div className="request">{chat.req}</div>
+                  <div className="response">{chat.res}</div>
+                  <div style={{ height: "10px", width: "100vw" }}></div>
+                </div>
+              ))}
+            </div>
+            </div>
+          <div className="newChat">
+            <textarea
+              className="querybox"
+              placeholder="Type your query..."
+              value={newChatText}
+              onChange={(e) => setNewChatText(e.target.value)}
+            />
+            <button className="responseButton" onClick={loadResponse}>
+              Load Response
+            </button>
+          </div>
+          {/* {response && <div className="responseDiv">{response}</div>} */}
+        
       </div>
     </div>
   );
-};
+};  
 
 export default Home;

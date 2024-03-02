@@ -1,32 +1,58 @@
+.mainContainer {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .sideImageContainer {
+    flex: 0 0 auto; /* Prevents the side image container from growing */
+  }
+  
+  .sideImage {
+    width: 100vh; /* Adjust width as needed */
+    height: 100vh; /* Maintain aspect ratio */
+  }
+  
+ 
+  
 .homeContainer {
-    height: 90vh;
-    width: 100vw;
-    max-width: 95vw;
-    margin: 0 auto;
-    overflow-x: hidden;
-    background-image: url('../assets/chat_background.jpg');
+    flex: 1;
+    background-image: url("../assets/chat_background.jpg");
+    background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    /* gap: 5px; */
+    height: 100vh;
+    margin: 0 auto;
+    /* max-width: 95vw; */
+    overflow-x: hidden;
+    /* padding-bottom: 20px; */
+    /* padding-top: 20px; */
+    position: relative;
+    width: 100vw;
 }
-
+  
+  
 .request,
 .response,
-.newChat,
-.querybox,
-.responseButton,
-.responseDiv,
-.formatHomeContainer,
-.textContainer,
-.prevChats {
-    width: 90%;
+.responseDiv{
+    width: 98%;
 }
-
+.formatHomeContainer{
+    width: 98%;
+    margin-bottom: 250px;
+}
+.textContainer{
+    width: 98%;
+}
+.prevChats {
+    width: 98%;
+   
+}
+.newChat{
+    width: 90%;
+    position: absolute;
+}
 .request,
 .response {
     min-height: 50px; /* or adjust based on your needs */
@@ -52,23 +78,29 @@
 }
 
 .querybox {
-    width: 80.5%;
+    width: 50%;
     min-height: 100px; /* or adjust based on your needs */
     border: 1px solid black;
     border-radius: 5px;
     padding: 5px;
     font-family: 'Times New Roman', Times, serif;
     margin-left: 15px;
+    position: fixed;
+    bottom: 100px;
 }
 
 .logout{
     background-color: red;
-    margin-left: 1000px;
+    margin-right: 10px;
     cursor: pointer;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    position: fixed;
 }
 
 
-.responseButton {
+.loadButton {
     height: 50px;
     width: 80px;
     background: lightgreen;
@@ -80,6 +112,24 @@
     cursor: pointer;
 }
 
+.loadButton:hover{
+    background-color: rgb(234, 212, 255);
+}
+
+.responseButton {
+    height: 50px;
+    width: 80px;
+    background: lightgreen;
+    color: darkcyan;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 20px;
+    margin-left: 400px;
+    cursor: pointer;
+    position: fixed;
+    bottom: 10px;
+}
+
 .responseButton:hover{
     background-color: blueviolet;
 }
@@ -89,14 +139,28 @@
     background-color: lightblue;
     font-family: 'Times New Roman', Times, serif;
     color: black;
+    
 }
 
 .head{
     font-size: 40px;
     color: blueviolet;
     margin-left: 200px;
+    animation: blink-animation 0.9s infinite; 
 }
-
+  
+  @keyframes blink-animation {
+    0% {
+      opacity: 1; /* Fully visible */
+    }
+    50% {
+      opacity: 0; /* Fully transparent */
+    }
+    100% {
+      opacity: 1; /* Fully visible */
+    }
+  }
+  
 .formatHomeContainer,
 .textContainer,
 .prevChats {
@@ -105,8 +169,3 @@
     /* padding: 20px; */
 }
 
-/* .textContainer,
-.prevChats {
-    max-width: 100%;
-    overflow: auto;
-} */

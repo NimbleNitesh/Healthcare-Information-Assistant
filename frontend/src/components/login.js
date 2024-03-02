@@ -7,7 +7,7 @@ import "./login.css";
 // import login_background from "../assets/login_background.jpg";
 
 const LoginForm = styled.div`
-  background-color: #fff;
+  background-color: rgb(0 255 125 / 75%);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

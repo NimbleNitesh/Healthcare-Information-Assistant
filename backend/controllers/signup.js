@@ -1,5 +1,5 @@
 // controllers/usersController.js
-
+import bcrypt from 'bcrypt';
 import User from '../models/user.js';
 import nodemailer from 'nodemailer';
 import { v4 as uuidv4 } from 'uuid';
@@ -34,34 +34,31 @@ async function sendmail({_id,email},res){
 // Controller function to handle the '/users' route
 let createuser = async (req, res) => {
   try {
-    const email=req.body.email;
+    const email = req.body.email;
     const user = await User.findOne({ email });
+    
     if (user) {
       return res.status(201).json({ message: 'Already' });
     }
+    const hash = await bcrypt.hash(req.body.password, 10);
+
     const newUser = new User({
       name: req.body.name,
       email: req.body.email,
-      password: req.body.password,
+      password: hash,
       texts: [],
       verified: 0,
-      forgot:0
+      forgot: 0
     });
-    newUser.save()
-    .then((result)=>{
-      sendmail(result,res).then(()=>{
-        res.status(200).json({ message:"Sign in" });
-      })
-      .catch((error)=>{
-        console.log(error);
-      })
-    })
-    
+    await newUser.save();
+    await sendmail(newUser, res);
+    res.status(200).json({ message: "Sign in" });
   } catch (error) {
     console.error(error);
-    res.status(500).send('Internal Server Error');
+    res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
 
 
 export default { createuser };
