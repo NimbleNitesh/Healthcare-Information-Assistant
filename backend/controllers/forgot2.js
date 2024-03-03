@@ -1,5 +1,5 @@
 import User from '../models/user.js';
-
+import bcrypt from 'bcrypt';
 let forgot2user=async(req,res)=>{
     const email=req.body.email;
     const password=req.body.newpassword;
@@ -12,7 +12,8 @@ let forgot2user=async(req,res)=>{
             return res.status(202).json({ message: 'User Not Verified' });
           }
           else{
-            user.password = password;
+            const hash = await bcrypt.hash(password, 10);
+            user.password = hash;
             user.forgot=false;
             await user.save();
             res.status(200).json({ message: 'Password reset successful.' });
