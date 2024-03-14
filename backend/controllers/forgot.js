@@ -17,7 +17,7 @@ async function sendmail(id,email){
   const secretKey = myUuid + id;
 
       // const verificationLink = `http://localhost:8080/verify/${_id}/${secretKey}`;
-      const verificationLink = `https://healthcarellm-srq1.onrender.com/verify2/${id}/${secretKey}`;
+      const verificationLink = `http://localhost:8080/verify2/${id}/${secretKey}`;
 
       await transporter.sendMail({
         from: "healthcarellm@gmail.com",

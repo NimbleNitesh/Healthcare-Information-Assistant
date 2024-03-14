@@ -37,7 +37,7 @@ const Signup = () => {
       }
       {
         setLoading(true)
-    axios.post('https://healthcarellm-srq1.onrender.com/signup', {
+    axios.post('http://localhost:8080/signup', {
         name,
         email,
         password
